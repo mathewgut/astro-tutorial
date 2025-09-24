@@ -1,4 +1,8 @@
 ---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Navigation from '../components/Navigation.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 const pageTitle = "About Me";
 
@@ -12,7 +16,7 @@ const identity = {
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 
 const happy = true;
-const finished = false;
+const finished = true;
 const goal = 3;
 
 const skillColor = "navy";
@@ -20,11 +24,6 @@ const skillColor = "navy";
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
         <style define:vars={{skillColor}}>
             h1 {
                 color: purple;
@@ -38,15 +37,13 @@ const skillColor = "navy";
             }
         </style>
 	</head>
-	<body>
-		<h1>{pageTitle}</h1>
+   <BaseLayout pageTitle={pageTitle}>
         <h2>Life facts</h2>
         <ul>
             <li>I once ate 43 hotdogs in 12 minutes</li>
             <li>I was NOT convicted of a public urination charge in 2007</li>
             <li>I had a dog</li>
         </ul>
-        <a href="/">Go back home</a>
 
         <p>Here are a few facts about me:</p>
         <ul>
@@ -62,9 +59,7 @@ const skillColor = "navy";
         </ul>
 
         {happy && <p>I am happy to be learning Astro!</p>}
-
-    {finished && <p>I finished this tutorial!</p>}
-
-    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-	</body>
+        {finished && <p>I finished this tutorial!</p>}
+        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+    </BaseLayout>
 </html>
